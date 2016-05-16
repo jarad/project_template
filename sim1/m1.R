@@ -1,13 +1,11 @@
-# R object passed from make file:
-#    i:      simulation id
-method_name = "m1"                # Do NOT use "sum"
+method_name = "m1"  
 
-load(file=paste0("sim/sim-",i,".RData"))                         # Don't change this line
+source("dont_touch/load_sim.R")
 
 ##################################################################################
-# Put method here with results called 'inf'
+# Put method here
 inf = rnorm(10, mean(y)+1, 1) # Fake MCMC samples
 
 ##################################################################################
 
-saveRDS(inf, file=paste0("sim/inf-",method_name,"-",i,".RData")) # Don't change this line
+source("dont_touch/save.R")

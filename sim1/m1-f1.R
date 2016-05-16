@@ -1,16 +1,16 @@
 # R object passed from makefile:
 #    i:      simulation id
-method_name = "m2"               
+method_name = "m1"                
+summary_stat = "f1"
 
-source("dont_touch/load_sim.R")
-
-##################################################################################
-# Put method here with results called 'inf'
-inf = rnorm(10, mean(y)+2, 1) # Fake MCMC samples
-
-save_objects = c("inf")
+source("dont_touch/load_inf.R")
 
 ##################################################################################
+# Put code to extract summary statistics here
 
-source("dont_touch/save_inf.R")
+sum = median(inf)
 
+save_objects()
+##################################################################################
+
+source("dont_touch/save_sum.R")

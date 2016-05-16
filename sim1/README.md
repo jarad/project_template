@@ -7,6 +7,10 @@ In order to use this framework, you will need to
 
 All intermediate files are saved as .RData files so that the users has complete freedom for what information is available.
 
+Don't touch these lines
+
+    source("dont_touch/...")
+
 ## Create simulation code
 
 1. Update `sims.R` to create simulations.
@@ -21,4 +25,5 @@ TODO: How to deal with the same methods, but with different tuning parameters. S
 
 ## Create code to extract summary statistics, e.g. CIs
 
-1. 
+1. Create script to extract summary statistics for each method-fig combination. 
+1. Update `Makefile.R` with the necessary figs. 

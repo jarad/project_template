@@ -1,12 +1,32 @@
-# This file creates Makefile
+# This file creates an extremely verbose Makefile
+library(plyr)
+
+
 paper = "paper"    # name of manuscript file w/o .Rnw extension
-dirs = c("sim1")   # name of directories manuscript depends on
+
+# simulation studies
+nsims = read.csv("nsims.csv")
+sim_methods = read.csv("sim_methods.csv")
+
+
 
 # You should NOT need to modify anything below
 ##################################################################
 
 dir_make = paste("\tcd",dirs,"&& $(MAKE)\n")
 
+
+
+
+##################################################################
+# Utility functions
+##################################################################
+make_rule(target,prereq,recipe) {
+	cat(paste0(target,": ",prereq,"\n\t",recipe,"\n\n"))
+}
+
+##################################################################
+# Makefile creation starts here
 ##################################################################
 sink("Makefile")
 cat("####################################################\n")
@@ -21,6 +41,15 @@ cat("####################################################\n")
 cat(paste0("PAPER= ",paper,"\n\n"))
 
 cat("all: $(PAPER).pdf\n\n")
+
+
+##################################################################
+# Rules for simulations
+##################################################################
+ddply(nsims, .(sim_name,nsims), {
+	
+})
+
 
 # Create manuscript
 cat("$(PAPER).pdf: $(PAPER).Rnw\n")
