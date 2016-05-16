@@ -24,3 +24,6 @@ vignettes/*.pdf
 *.aux
 *.tex
 *.log
+
+# Makefiles
+Makefile
