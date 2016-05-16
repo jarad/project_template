@@ -13,10 +13,10 @@ sim_target = paste0("sim/sim-",1:nsims,".rds")
 sim_depend = rep("sim.R", nsims)
 sim_recipe = paste0("Rscript -e"," 'i=",1:nsims,"; source(\"sim.R\")'")
 
-d = expand.grid(i=1:nsims, method_name=methods)
-inf_target = paste0("sim/inf-",d$method_name,"-",d$i,".rds")
-inf_depend = paste0(d$method_name, ".R ", "sim/sim-", d$i, ".rds")
-inf_recipe = paste0("Rscript -e"," 'i=",d$i,"; source(\"",d$method_name,".R\")'")
+d = expand.grid(i=1:nsims, method=methods)
+inf_target = paste0("sim/inf-",d$method,"-",d$i,".rds")
+inf_depend = paste0(d$method, ".R ", "sim/sim-", d$i, ".rds")
+inf_recipe = paste0("Rscript -e"," 'i=",d$i,"; source(\"",d$method,".R\")'")
 
 ##################################################################
 sink("Makefile")
