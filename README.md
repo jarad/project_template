@@ -25,3 +25,34 @@ The goal of this template is to provide my students (or anybody else who is inte
 - the makefiles will be set up to be run on a SLURM cluster
 
 
+
+## Input
+
+
+
+
+## RStudio
+
+If you are using RStudio, you can set it up to work with Makefiles. 
+What you need to do is 
+
+- Tools > Project Options... > Code:Editing 
+  - unselect 'Insert spaces for tab'
+- Tools > Project Options... > Build Tools 
+  - set 'Project Build Tools' to 'Makefile'
+  - restart RStudio
+  
+## Windows
+
+From <http://robjhyndman.com/hyndsight/makefiles/>:
+  - Install [Rtools ](http://cran.r-project.org/bin/windows/Rtools/)
+ 
+
+## Resources
+
+In approximately the order of importance. 
+
+<http://robjhyndman.com/hyndsight/makefiles/>
+<http://stat545.com/automation04_make-activity.html>
+<https://www.gnu.org/software/make/manual/html_node/index.html>
+<http://www.r-bloggers.com/rstudio-and-makefiles-mind-your-options/>
