@@ -1,5 +1,5 @@
 
-infile = paste0("sim/inf-",method_name,"-",i,".RData")
-outfile = paste0("sim/sum-",method_name,"-",summary_stat,"-",i,".RData")
+infile = paste0(".data/inf-",method_name,"-",i,".RData")
+outfile = paste0(".data/sum-",method_name,"-",summary_stat,"-",i,".RData")
 
 load(file=infile)
