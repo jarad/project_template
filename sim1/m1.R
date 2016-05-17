@@ -1,5 +1,6 @@
 method_name = "m1"  
 
+source("settings.R") # to set 'sep'
 source("dont_touch/load_sim.R")
 
 ##################################################################################

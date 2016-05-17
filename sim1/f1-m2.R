@@ -3,13 +3,14 @@
 method_name = "m2"                
 summary_stat = "f1"
 
+source("settings.R") # to set 'sep'
 source("dont_touch/load_inf.R")
 
 ##################################################################################
 # Put code to extract summary statistics here
 
-sum = median(inf)
-save_objects = c("sum")
+median = median(inf)
+save_objects = c("median")
 
 ##################################################################################
 

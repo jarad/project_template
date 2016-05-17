@@ -3,6 +3,7 @@
 method_name = "m2"                
 summary_stat = "t1"
 
+source("settings.R") # to set 'sep'
 source("dont_touch/load_inf.R")
 
 ##################################################################################
