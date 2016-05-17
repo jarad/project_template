@@ -18,12 +18,14 @@ Don't touch these lines
 
 ## Create inference code
 
-1. Create method scripts, i.e. <method>.R.
-1. Update `Makefile.R` with the <method>s. 
+1. Create method scripts, e.g. m1.R.
+1. Update `Makefile.R` with the methods, e.g. methods=c("m1"). 
 
 TODO: How to deal with the same methods, but with different tuning parameters. See issue #1. 
 
 ## Create code to extract summary statistics, e.g. CIs
 
-1. Create script to extract summary statistics for each method-fig combination. 
-1. Update `Makefile.R` with the necessary figs. 
+1. Create script to extract summary statistics for each fig-method combination, e.g. f1-m1.R. 
+1. Update `Makefile.R` with the necessary figs, e.g. figs=c("f1"). 
+
+## Create code to create figures and tables
