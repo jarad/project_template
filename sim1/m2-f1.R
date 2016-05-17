@@ -1,6 +1,6 @@
 # R object passed from makefile:
 #    i:      simulation id
-method_name = "m1"                
+method_name = "m2"                
 summary_stat = "f1"
 
 source("dont_touch/load_inf.R")
@@ -8,7 +8,7 @@ source("dont_touch/load_inf.R")
 ##################################################################################
 # Put code to extract summary statistics here
 
-sum = median(inf)
+sum = mean(inf)
 save_objects = c("sum")
 
 ##################################################################################
