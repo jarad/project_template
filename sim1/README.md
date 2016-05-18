@@ -31,3 +31,19 @@ TODO: How to deal with the same methods, but with different tuning parameters. S
 ## Create code to create figures and tables
 
 1. Create script to create figure or table, e.g. f1.R or t1.R.
+
+## Create Makefile
+
+Create the makefile by running 
+
+    source("Makefile.R")
+    
+in this directory.
+
+## Run analysis 
+
+Run the analysis by running 
+
+    make
+    
+in this directory. 
