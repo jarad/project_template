@@ -54,7 +54,7 @@ cat("####################################################\n")
 
 # Slurm cluster
 if (Sys.getenv("SLURM_JOB_ID")!="") {
-	cat("SHELL=srun \n.SHELLFLAGS= -N1 -n1 \nR=$(SHELL) $(.SHELLFLAGS) \nR=$(SHELL) $(.SHELLFLAGS) module load R; \n\n\n")
+	cat("SHELL=srun \n.SHELLFLAGS= -N1 -n1 \nR=$(SHELL) $(.SHELLFLAGS) module load R; \n\n\n")
 }
 cat("R+= Rscript -e\n\n")
 
