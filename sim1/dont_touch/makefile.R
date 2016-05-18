@@ -53,7 +53,7 @@ cat("#\n")
 cat("####################################################\n")
 
 # Slurm cluster
-cat("ifdef SLURM_JOB_ID\nSHELL=srun \n.SHELLFLAGS= -N1 -n1 bash -c \nR=$(SHELL) $(.SHELLFLAGS) \nendif\n\n")
+cat("ifdef SLURM_JOB_ID\nSHELL=srun \n.SHELLFLAGS= -N1 -n1 \nR=$(SHELL) $(.SHELLFLAGS) \nR=$(SHELL) $(.SHELLFLAGS) module load R; \nendif\n\n")
 cat("R+= Rscript -e\n\n")
 
 cat(".PHONY: all\n")
