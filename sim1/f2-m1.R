@@ -9,8 +9,8 @@ source("dont_touch/load_inf.R")
 ##################################################################################
 # Put code to extract summary statistics here
 
-sum = sd(inf)
-save_objects = c("sum")
+sd = sd(inf)
+save_objects = c("sd")
 
 ##################################################################################
 

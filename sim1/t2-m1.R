@@ -9,8 +9,8 @@ source("dont_touch/load_inf.R")
 ##################################################################################
 # Put code to extract summary statistics here
 
-sum = median(inf)
-save_objects = c("sum")
+var = var(inf)
+save_objects = c("var")
 
 ##################################################################################
 
