@@ -52,7 +52,11 @@ cat("# modify Makefile.R instead\n")
 cat("#\n")
 cat("####################################################\n")
 
-cat(".PHONY: all\n\n")
+# Slurm cluster
+cat("ifdef SLURM_JOB_ID\nSHELL=srun\n.SHELLFLAGS= -N1 -n1  bash -c \nendif\n\n")
+
+
+cat(".PHONY: all\n")
 cat("all:",paste(c(fig$target,tab$target),collapse=" "),"\n\n") 
 #cat("all:",paste(c(fig_sum$target,tab_sum$target),collapse=" "),"\n\n") 
 #cat("all:",paste("f1.pdf",collapse=" "),"\n\n") 

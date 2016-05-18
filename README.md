@@ -44,7 +44,7 @@ In addition, if you want to be able to click on the `Build All` button in RStudi
 In approximately the order of importance. 
 
 - [Makefiles and R](http://robjhyndman.com/hyndsight/makefiles/)
-- [Makefiles and Slrum](http://plindenbaum.blogspot.com/2014/09/parallelizing-gnu-make-4-in-slurm.html)
+- [Makefiles and Slurm](http://plindenbaum.blogspot.com/2014/09/parallelizing-gnu-make-4-in-slurm.html)
 - [Make manual](https://www.gnu.org/software/make/manual/html_node/index.html)
 - [Example Makefile w/ R](http://stat545.com/automation04_make-activity.html)
 - [Make with RStudio](http://www.r-bloggers.com/rstudio-and-makefiles-mind-your-options/)
