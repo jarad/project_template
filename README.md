@@ -24,28 +24,19 @@ The goal of this template is to provide my students (or anybody else who is inte
   - with its own makefile
 - the makefiles will be set up to be able to run on a SLURM cluster
 
+**CURRENTLY ONLY THE SIM1 DIRECTORY IS WORKING**
 
+## Setup
 
-## Input
+To set this up to work propoerly, you need to have `make` which will automatically come with Mac/Linux builds of R but on a Windows machine [Rtools](http://cran.r-project.org/bin/windows/Rtools/) will need to be installed separately. 
 
-
-
-
-## RStudio
-
-If you are using RStudio, you can set it up to work with Makefiles. 
-What you need to do is 
+In addition, if you want to be able to click on the `Build All` button in RStudio, you need to setup RStudio to work with makefiles, in particular 
 
 - Tools > Project Options... > Code:Editing 
   - unselect 'Insert spaces for tab'
 - Tools > Project Options... > Build Tools 
   - set 'Project Build Tools' to 'Makefile'
   - restart RStudio
-  
-## Windows
-
-From <http://robjhyndman.com/hyndsight/makefiles/>:
-  - Install [Rtools ](http://cran.r-project.org/bin/windows/Rtools/)
  
 
 ## Resources

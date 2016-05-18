@@ -1,3 +1,5 @@
+stop("This script is not currently working. You probably want to look at the sim1/ directory.")
+
 # This file creates an extremely verbose Makefile
 library(plyr)
 
