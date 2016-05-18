@@ -1,3 +1,4 @@
+library(plyr)
 
 source("../util/make_rules.R")
 
@@ -9,7 +10,7 @@ source("../util/make_rules.R")
 #     recipe
 
 sim = list(target = paste0(data_dir,"sim",sep,1:nsims,".RData"),
-					 prereq = rep("sim.R", nsims),
+					 prereq = rep("sim.R settings.R", nsims),
 					 recipe = paste0("Rscript -e"," 'i=",1:nsims,"; source(\"sim.R\")'"))
 
 d = expand.grid(i=1:nsims, method=methods)
