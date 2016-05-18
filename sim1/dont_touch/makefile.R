@@ -11,35 +11,35 @@ source("../util/make_rules.R")
 
 sim = list(target = paste0(data_dir,"sim",sep,1:nsims,".RData"),
 					 prereq = rep("sim.R settings.R", nsims),
-					 recipe = paste0("Rscript -e"," 'i=",1:nsims,"; source(\"sim.R\")'"))
+					 recipe = paste0("$(R)"," 'i=",1:nsims,"; source(\"sim.R\")'"))
 
 d = expand.grid(i=1:nsims, method=methods)
 inf = list(target = paste0(data_dir,"inf",sep,d$method,sep,d$i,".RData"),
 					 prereq = paste0(d$method, ".R ", data_dir,"sim", sep, d$i, ".RData"),
-					 recipe = paste0("Rscript -e"," 'i=",d$i,"; source(\"",d$method,".R\")'"))
+					 recipe = paste0("$(R)"," 'i=",d$i,"; source(\"",d$method,".R\")'"))
 
 f = expand.grid(i=1:nsims, method=methods, fig=figs)
 fig_sum = list(target = paste0(data_dir,"sum",sep,f$fig,sep,f$method,sep,f$i,".RData"),
 					 prereq = paste0(f$fig,sep,f$method, ".R ", data_dir,"inf",sep, f$method, sep, f$i,".RData"), # should be able to use inf$prereq here
-					 recipe = paste0("Rscript -e"," 'i=",d$i,"; source(\"",f$fig,sep,f$method,".R\")'"))
+					 recipe = paste0("$(R)"," 'i=",d$i,"; source(\"",f$fig,sep,f$method,".R\")'"))
 
 t = expand.grid(i=1:nsims, method=methods, tab=tabs)
 tab_sum = list(target = paste0(data_dir,"sum",sep,t$tab,sep,t$method,sep,t$i,".RData"),
 					 prereq = paste0(t$tab,sep,t$method, ".R ", data_dir,"inf",sep, t$method, sep, t$i,".RData"), # should be able to use inf$prereq here
-					 recipe = paste0("Rscript -e"," 'i=",d$i,"; source(\"",t$tab,sep,t$method,".R\")'"))
+					 recipe = paste0("$(R)"," 'i=",d$i,"; source(\"",t$tab,sep,t$method,".R\")'"))
 
 # Figure and table files have many prereqs
 f$files = with(f, paste0(data_dir,"sum",sep,fig,sep,method,sep,i,".RData"))
 prereq_list = daply(f, .(fig), function(x) paste(x$files,collapse=" "))
 fig = list(target = paste0(figs,".pdf"),
 					 prereq = paste0(figs,".R ",prereq_list),
-					 recipe = paste0("Rscript -e"," 'source(\"",figs,".R\")'"))
+					 recipe = paste0("$(R)"," 'source(\"",figs,".R\")'"))
 
 t$files = with(t, paste0(data_dir,"sum",sep,tab,sep,method,sep,i,".RData"))
 prereq_list = daply(t, .(tab), function(x) paste(x$files,collapse=" "))
 tab = list(target = paste0(tabs,".tex"),
 					 prereq = paste0(tabs,".R ",prereq_list),
-					 recipe = paste0("Rscript -e"," 'source(\"",tabs,".R\")'"))
+					 recipe = paste0("$(R)"," 'source(\"",tabs,".R\")'"))
 
 
 ##################################################################
@@ -53,8 +53,8 @@ cat("#\n")
 cat("####################################################\n")
 
 # Slurm cluster
-cat("ifdef SLURM_JOB_ID\nSHELL=srun\n.SHELLFLAGS= -N1 -n1  bash -c \nendif\n\n")
-
+cat("ifdef SLURM_JOB_ID\nSHELL=srun \n.SHELLFLAGS= -N1 -n1 bash -c \nR=$(SHELL) $(.SHELLFLAGS) \nendif\n\n")
+cat("R+= Rscript -e\n\n")
 
 cat(".PHONY: all\n")
 cat("all:",paste(c(fig$target,tab$target),collapse=" "),"\n\n") 
