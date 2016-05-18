@@ -22,7 +22,7 @@ The goal of this template is to provide my students (or anybody else who is inte
 - each simulation study will be module
   - in its own directory
   - with its own makefile
-- the makefiles will be set up to be run on a SLURM cluster
+- the makefiles will be set up to be able to run on a SLURM cluster
 
 
 
@@ -52,7 +52,8 @@ From <http://robjhyndman.com/hyndsight/makefiles/>:
 
 In approximately the order of importance. 
 
-<http://robjhyndman.com/hyndsight/makefiles/>
-<http://stat545.com/automation04_make-activity.html>
-<https://www.gnu.org/software/make/manual/html_node/index.html>
-<http://www.r-bloggers.com/rstudio-and-makefiles-mind-your-options/>
+- [Makefiles and R](http://robjhyndman.com/hyndsight/makefiles/)
+- [Makefiles and Slrum](http://plindenbaum.blogspot.com/2014/09/parallelizing-gnu-make-4-in-slurm.html)
+- [Make manual](https://www.gnu.org/software/make/manual/html_node/index.html)
+- [Example Makefile w/ R](http://stat545.com/automation04_make-activity.html)
+- [Make with RStudio](http://www.r-bloggers.com/rstudio-and-makefiles-mind-your-options/)
