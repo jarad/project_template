@@ -52,11 +52,13 @@ cat("# modify Makefile.R instead\n")
 cat("#\n")
 cat("####################################################\n")
 
+Rcmd = ""
 # Slurm cluster
 if (Sys.getenv("SLURM_JOB_ID")!="") {
-	cat("SHELL=srun \n.SHELLFLAGS= -N1 -n1 \nR=$(SHELL) $(.SHELLFLAGS) module load R; \n\n\n")
+  Rcmd = paste0(Rcmd,"srun -N1 -n1 bash -c module load R; ")
 }
-cat("R+= Rscript -e\n\n")
+Rcmd = paste0(Rcmd,"Rscript -e")
+cat(paste0("R=",Rcmd,"\n\n"))
 
 cat(".PHONY: all\n")
 cat("all:",paste(c(fig$target,tab$target),collapse=" "),"\n\n") 
