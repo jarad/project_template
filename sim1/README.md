@@ -52,4 +52,5 @@ Modify any of the existing scripts and then run `make`.
 
 ## Adding scripts
 
-To add a script for any part of the process, you will need to update the `settings.R` file and create the script. Then run `Rscript Makefile.R` to create a new Makefile and then run `make` to actually perform the analysis
+To add a script for any part of the process, you will need to update the `settings.R` file and create the script(s).
+Then run `Rscript Makefile.R` to create a new Makefile and then run `make` to actually perform the analysis.
