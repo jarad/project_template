@@ -55,7 +55,10 @@ cat("####################################################\n")
 Rcmd = ""
 # Slurm cluster
 if (Sys.getenv("SLURM_JOB_ID")!="") {
-  Rcmd = paste0(Rcmd,"srun -N1 -n1 bash -c module load R; ")
+  # Rcmd = paste0(Rcmd,"srun -N1 -n1 bash -c module load R; ")
+  cat("SHELL=srun\n")
+  cat(".SHELLFLAGS= -N1 -n1  bash -c\n\n")
+  Rcmd = paste0(Rcmd, "module load R; ")
 }
 Rcmd = paste0(Rcmd,"Rscript -e")
 cat(paste0("R=",Rcmd,"\n\n"))
