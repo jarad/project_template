@@ -23,9 +23,28 @@ Don't touch these lines
 1. Create script to create figure or table, e.g. `f1.R` and `t1.R`.
 1. Create Makefile by running `Rscript Makefile.R`.
 
-## Run analysis 
+## Run everything
 
-Run the analysis by running `make` in this directory. 
+To run everything use:
+
+    $ make
+    
+or 
+
+    $ make all
+
+Alternative useful targets are 
+
+    $ make sims             # to make all the simulations
+    $ make simulationss     # to make all the simulations
+    $ make inference        # to perform all the inference
+    $ make summary          # to extract all the summary statistics for making figures and tables
+    $ make figs             # to create all the figures
+    $ make figuress         # to create all the figures
+    $ make tabs             # to create all the tables
+    $ make tables           # to create all the tables
+    $ make clean            # to delete all the .data/*.RData files.
+    $ make clean-all        # same as `make clean` but also deletes all figure and table files
 
 ## Modifying existing scripts
 

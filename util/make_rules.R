@@ -1,7 +1,8 @@
 ##################################################################
 # Utility functions
 ##################################################################
-make_rule = function(target,prereq,recipe) {
+make_rule = function(target,prereq=NULL,recipe=NULL,.PHONY=FALSE) {
+	if (.PHONY) cat(".PHONY:", target,"\n")
 	cat(paste0(target,": ",prereq,"\n\t",recipe,"\n\n"))
 }
 

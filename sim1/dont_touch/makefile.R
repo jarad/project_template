@@ -55,41 +55,27 @@ cat("####################################################\n")
 Rcmd = ""
 # Slurm cluster
 if (Sys.getenv("SLURM_JOB_ID")!="") {
-  # Rcmd = paste0(Rcmd,"srun -N1 -n1 bash -c module load R; ")
-  cat("SHELL=srun\n")
-  cat(".SHELLFLAGS= -N1 -n1  bash -c\n\n")
+  cat("SHELL=srun\n.SHELLFLAGS= -N1 -n1  bash -c\n\n")
   Rcmd = paste0(Rcmd, "module load R; ")
 }
 Rcmd = paste0(Rcmd,"Rscript -e")
 cat(paste0("R=",Rcmd,"\n\n"))
 
-cat(".PHONY: all\n")
-cat("all:",paste(c(fig$target,tab$target),collapse=" "),"\n\n") 
-#cat("all:",paste(c(fig_sum$target,tab_sum$target),collapse=" "),"\n\n") 
-#cat("all:",paste("f1.pdf",collapse=" "),"\n\n") 
+make_rule("all",              paste(c(fig$target,tab$target), collapse=" "),          .PHONY=TRUE)
+make_rule("sims simulations", paste(sim$target, collapse=" "),                        .PHONY=TRUE)
+make_rule("inf inference",    paste(inf$target, collapse=" "),                        .PHONY=TRUE)
+make_rule("sum summary",      paste(c(fig_sum$target, tab_sum$target), collapse=" "), .PHONY=TRUE)
+make_rule("figs figures",     paste(fig$target, collapse=" "),                        .PHONY=TRUE)
+make_rule("tabs tables",      paste(tab$target, collapse=" "),                        .PHONY=TRUE)
 
-cat("# Simulation rules\n")
-make_rules(sim)
-cat("\n")
+cat("# Simulation rules\n");               make_rules(sim);     cat("\n")
+cat("# Inference rules\n");                make_rules(inf);     cat("\n") 
+cat("# Figure summary statistic rules\n"); make_rules(fig_sum); cat("\n")
+cat("# Table summary statistic rules\n");  make_rules(tab_sum); cat("\n")
+cat("# Figure rules\n");                   make_rules(fig);     cat("\n")
+cat("# Table rules\n");                    make_rules(tab);     cat("\n")
 
-cat("# Inference rules\n")
-make_rules(inf)
-cat("\n") 
-
-cat("# Figure summary statistic rules\n")
-make_rules(fig_sum)
-cat("\n")
-
-cat("# Table summary statistic rules\n")
-make_rules(tab_sum)
-cat("\n")
-
-cat("# Figure rules\n")
-make_rules(fig)
-cat("\n")
-
-cat("# Table rules\n")
-make_rules(tab)
-cat("\n")
+make_rule("clean",     recipe=paste0("-rm ",data_dir,"*.RData"), .PHONY=TRUE)
+make_rule("clean-all", "clean", recipe=paste0("-rm ",paste(c(fig$target,tab$target), collapse=" ")), .PHONY=TRUE)
 
 sink()
