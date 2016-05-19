@@ -50,7 +50,12 @@ cat("# DO NOT MODIFY THIS FILE\n")
 cat("#\n")
 cat("# modify Makefile.R instead\n")
 cat("#\n")
+cat("####################################################\n\n")
+
+
 cat("####################################################\n")
+cat("# Variables \n")
+cat("####################################################\n\n")
 
 Rcmd = ""
 # Slurm cluster
@@ -61,12 +66,26 @@ if (Sys.getenv("SLURM_JOB_ID")!="") {
 Rcmd = paste0(Rcmd,"Rscript -e")
 cat(paste0("R=",Rcmd,"\n\n"))
 
-make_rule("all",              paste(c(fig$target,tab$target), collapse=" "),          .PHONY=TRUE)
+
+cat("####################################################\n")
+cat("# Targets \n")
+cat("####################################################\n\n")
+
+
+make_rule("all","figures tables",.PHONY=TRUE)
+
 make_rule("sims simulations", paste(sim$target, collapse=" "),                        .PHONY=TRUE)
 make_rule("inf inference",    paste(inf$target, collapse=" "),                        .PHONY=TRUE)
 make_rule("sum summary",      paste(c(fig_sum$target, tab_sum$target), collapse=" "), .PHONY=TRUE)
 make_rule("figs figures",     paste(fig$target, collapse=" "),                        .PHONY=TRUE)
 make_rule("tabs tables",      paste(tab$target, collapse=" "),                        .PHONY=TRUE)
+
+
+
+cat("####################################################\n")
+cat("# Verbose rules\n")
+cat("####################################################\n\n")
+
 
 cat("# Simulation rules\n");               make_rules(sim);     cat("\n")
 cat("# Inference rules\n");                make_rules(inf);     cat("\n") 
